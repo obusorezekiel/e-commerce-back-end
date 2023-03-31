@@ -1,2 +1,6 @@
 const mongoose= require('mongoose');
-mongoose.connect("mongodb://localhost:27017/e-commerce")
+require('dotenv').config()
+mongoose.set("strictQuery", false);
+mongoose.connect(process.env.DATABASE, () => {
+  console.log("Connected to MongoDB");
+});
