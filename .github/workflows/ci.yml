@@ -30,3 +30,14 @@ jobs:
           file: ./dockerfile.back-end
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/e-commerce-back-end:${{ github.sha }}
+
+      - name: The current paths
+        run:
+          echo $PWD
+      - name: Checkout GitOps
+        uses: actions/checkout@v3
+        with:
+          repository: obusorezekiel/gitops
+          path: ./gitops
+          ref: main
+          token: ${{ secrets.REPO_PAT }}
